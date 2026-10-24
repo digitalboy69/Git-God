@@ -1,0 +1,2 @@
+/* Renders GitHub file diffs (used by compare, commits and pull requests) */
+const files=f=>(f||[]).map(x=>`<h3>${esc(x.filename)} <span class="tag">${x.status}</span> <span class="add">+${x.additions}</span> <span class="del">-${x.deletions}</span></h3>${x.patch?`<pre>${x.patch.split('\n').map(l=>`<div class="${l[0]=='+'?'add':l[0]=='-'?'del':''}">${esc(l)}</div>`).join('')}</pre>`:'<div class="dim">No text diff available</div>'}`).join('');

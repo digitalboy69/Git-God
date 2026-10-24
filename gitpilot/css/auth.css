@@ -1,0 +1,6 @@
+/* Login / profile screen */
+#conn{max-width:470px;margin:0 auto;padding:9vh 18px 40px;animation:in .6s var(--ease) both}
+#conn h1{display:flex;align-items:center;gap:14px;font-size:40px;font-weight:800;letter-spacing:-.04em;line-height:1.1;margin:0 0 8px}#conn h1 .lg{width:48px;height:48px;border-radius:15px;font-size:26px}.gt{background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent}
+#conn>p.dim{font-size:15px;margin:0 0 22px}
+#conn .card{padding:22px;border-radius:20px}
+#conn .item{padding:12px 14px}#conn .list{box-shadow:none}

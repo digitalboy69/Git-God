@@ -1,0 +1,4 @@
+/* Notifications page */
+async function notes(){try{const n=await gh('/notifications?per_page=40');cache.n=n;main(`<h2>Notifications</h2><div class="row"><button onclick="markAll()">Mark all read</button></div><div class="list">${n.map((x,k)=>`<div class="item"><div class="g"><b>${esc(x.subject.title)}</b><div class="dim">${esc(x.repository.full_name)} · ${x.subject.type} · ${x.reason} · ${ago(x.updated_at)}</div></div>${x.unread?'<span class="tag ok">unread</span>':''}<button onclick="rd(${k})">Read</button></div>`).join('')||'<div class="item dim">Nothing here (needs notifications scope on classic tokens; fine-grained tokens cannot read notifications)</div>'}</div>`)}catch(e){err(e)}}
+async function rd(k){try{await gh('/notifications/threads/'+cache.n[k].id,{method:'PATCH'});notes()}catch(e){toast(e.message,1)}}
+async function markAll(){try{await gh('/notifications',{method:'PUT',body:{}});notes()}catch(e){toast(e.message,1)}}

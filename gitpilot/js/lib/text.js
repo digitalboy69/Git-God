@@ -1,0 +1,4 @@
+/* Text tools: ASCII folder tree, copy/download text panel */
+function asc(paths){const root={};paths.forEach(p=>{let n=root;p.split('/').forEach(s=>n=n[s]??={})});const o=[],rec=(n,pre)=>{const k=Object.keys(n).sort((a,b)=>(Object.keys(n[b]).length>0)-(Object.keys(n[a]).length>0)||a.localeCompare(b));k.forEach((s,i)=>{const l=i==k.length-1;o.push(pre+(l?'└── ':'├── ')+s+(Object.keys(n[s]).length?'/':''));rec(n[s],pre+(l?'    ':'│   '))})};rec(root,'');return o.join('\n')}
+function showTx(id,t,n){cache.tx=t;cache.txn=n;$(id).innerHTML=`<div class="row"><button onclick="navigator.clipboard.writeText(cache.tx);toast('Copied')">Copy</button><button class="pri" onclick="dlTx()">Download .txt</button></div><pre>${esc(t)}</pre>`}
+const dlTx=()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([cache.tx],{type:'text/plain'}));a.download=cache.txn;a.click()};

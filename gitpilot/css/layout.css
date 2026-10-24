@@ -1,0 +1,22 @@
+/* Layout: app frame, sidebar, header, main area, page animation */
+#app{display:flex;min-height:100vh;min-height:100dvh}
+aside{width:252px;flex-shrink:0;position:sticky;top:0;height:100vh;height:100dvh;display:flex;flex-direction:column;gap:2px;padding:20px 12px 14px;background:color-mix(in srgb,var(--side) 80%,transparent);backdrop-filter:blur(20px) saturate(1.4);-webkit-backdrop-filter:blur(20px) saturate(1.4);border-right:1px solid var(--bd);z-index:40;transition:transform .4s var(--ease)}
+aside h1{display:flex;align-items:center;gap:10px;margin:0 6px 20px;font-size:18px;font-weight:750;letter-spacing:-.02em}
+.lg{flex-shrink:0;display:grid;place-items:center;width:34px;height:34px;border-radius:11px;background:var(--g);font-size:18px;box-shadow:0 6px 18px -4px #7C5CFC99}
+.nav{position:relative;display:flex;justify-content:flex-start;gap:10px;width:100%;min-height:42px;padding:0 14px;border:0;background:none;color:var(--tx2);font-size:14px;font-weight:550;border-radius:12px;text-align:left}
+.nav:hover{background:var(--elev);color:var(--tx);border:0}
+.nav.on{color:var(--tx);background:linear-gradient(90deg,color-mix(in srgb,var(--p) 22%,transparent),transparent 92%)}
+.nav.on::before{content:"";position:absolute;left:0;top:10px;bottom:10px;width:3px;border-radius:3px;background:var(--g)}
+.me{margin-top:auto;display:flex;align-items:center;gap:10px;padding:10px;border:1px solid var(--bd);border-radius:14px;background:var(--card)}
+.me img{width:36px;height:36px;border-radius:50%}.me b{display:block;line-height:1.25;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.me>div{min-width:0}
+.foot{margin:10px 6px 0;font-size:11.5px;line-height:1.45;color:var(--tx2)}
+#scrim{display:none}
+main{flex:1;min-width:0;display:flex;flex-direction:column}
+header{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:10px;height:62px;padding:0 28px;background:color-mix(in srgb,var(--bg) 70%,transparent);backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);border-bottom:1px solid color-mix(in srgb,var(--bd) 80%,transparent)}
+header .sp{flex:1}#menu{display:none;width:38px;padding:0;font-size:17px}.ic{width:38px;padding:0;font-size:15px}
+header .un{font-weight:650}
+header select{width:auto;max-width:190px;min-height:36px;border-radius:99px;padding-left:14px;background-color:var(--elev)}
+.av{width:32px;height:32px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px var(--bg),0 0 0 4px color-mix(in srgb,var(--p) 55%,transparent)}
+#main{width:100%;max-width:1260px;margin:0 auto;padding:30px 32px 80px}
+#main>*{animation:in .55s var(--ease) both}#main>*:nth-child(2){animation-delay:.04s}#main>*:nth-child(3){animation-delay:.08s}#main>*:nth-child(4){animation-delay:.12s}#main>*:nth-child(5){animation-delay:.16s}#main>*:nth-child(n+6){animation-delay:.2s}
+@keyframes in{from{opacity:0;transform:translateY(12px)}}@keyframes fade{from{opacity:0}}@keyframes pop{from{opacity:0;transform:translateY(14px) scale(.97)}}@keyframes tin{from{opacity:0;transform:translateX(24px) scale(.95)}}

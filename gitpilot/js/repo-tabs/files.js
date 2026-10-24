@@ -1,0 +1,18 @@
+/* Files tab: browse, view, edit, create, delete files */
+T.files=async()=>{const sel=await brSel(),c=await gh(`${rp()}/contents/${S.path}?ref=${encodeURIComponent(S.branch)}`);
+  if(!Array.isArray(c))return openFile(c);
+  c.sort((a,b)=>(a.type=='dir'?0:1)-(b.type=='dir'?0:1)||a.name.localeCompare(b.name));cache.f=c;
+  $('#tb').innerHTML=`<div class="row">${sel}<span class="dim">/${esc(S.path)}</span>${S.path?`<button onclick="S.path=S.path.split('/').slice(0,-1).join('/');T.files()">↑ Up</button>`:''}<button onclick="T.files()">⟳</button><button class="pri" onclick="newFile()">＋ File</button></div><div class="list">${c.map((f,i)=>`<div class="item" onclick="nav(${i})"><span>${f.type=='dir'?'📁':'📄'}</span><div class="g">${esc(f.name)}</div><span class="dim">${f.type=='file'?(f.size/1024).toFixed(1)+' KB':''}</span></div>`).join('')}</div>`};
+const nav=i=>{const f=cache.f[i];S.path=f.path;T.files().catch(e=>toast(e.message,1))};
+function openFile(f){
+  if(f.encoding!='base64'||f.size>1e6)return $('#tb').innerHTML=`<div class="card">File too large or not loadable in browser. <a href="${f.html_url}" target="_blank" rel="noopener">Open on GitHub</a></div><button onclick="S.path=S.path.split('/').slice(0,-1).join('/');T.files()">← Back</button>`;
+  let t;try{t=new TextDecoder('utf-8',{fatal:true}).decode(Uint8Array.from(atob(f.content.replace(/\n/g,'')),c=>c.charCodeAt(0)))}catch{return $('#tb').innerHTML=`<div class="card">Binary file. <a href="${f.download_url}" target="_blank" rel="noopener">Download</a></div><button onclick="S.path=S.path.split('/').slice(0,-1).join('/');T.files()">← Back</button>`}
+  cache.sha=f.sha;cache.orig=t;
+  $('#tb').innerHTML=`<div class="row"><button onclick="S.path=S.path.split('/').slice(0,-1).join('/');T.files()">← Back</button><b>${esc(f.path)}</b><span id="dirty" class="warn"></span><span class="sp" style="flex:1"></span><button onclick="navigator.clipboard.writeText($('#ed').value);toast('Copied')">Copy</button><button onclick="dl()">Download</button></div><textarea id="ed" spellcheck="false" oninput="$('#dirty').textContent=this.value!=cache.orig?'● unsaved':''">${esc(t)}</textarea><div class="row"><input id="cm" value="Update ${esc(f.name)}"><button class="pri" onclick="save('${esc(f.path)}')">Commit to ${esc(S.branch)}</button><button class="dan" onclick="delFile('${esc(f.path)}')">Delete</button></div>`}
+const dl=()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([$('#ed').value]));a.download=S.path.split('/').pop();a.click()};
+async function save(p){try{if($('#ed').value==cache.orig)return toast('No changes');
+  const r=await gh(`${rp()}/contents/${p}`,{method:'PUT',body:{message:$('#cm').value||'Update '+p,content:enc($('#ed').value),sha:cache.sha,branch:S.branch}});cache.sha=r.content.sha;cache.orig=$('#ed').value;$('#dirty').textContent='';toast('Committed '+r.commit.sha.slice(0,7))}catch(e){toast(e.message,1)}}
+function delFile(p){confirmD(`Delete <b>${esc(p)}</b> from <b>${esc(S.branch)}</b>? This creates a commit.`,async()=>{await gh(`${rp()}/contents/${p}`,{method:'DELETE',body:{message:'Delete '+p,sha:cache.sha,branch:S.branch}});toast('Deleted');S.path=p.split('/').slice(0,-1).join('/');T.files()})}
+function newFile(){form('New file on '+S.branch,[{l:'Path',n:'p',v:S.path?S.path+'/':''},{l:'Contents',n:'c',t:'area'},{l:'Commit message',n:'m',v:'Add file'}],async v=>{
+  if(!v.p||v.p.startsWith('/')||v.p.endsWith('/')||v.p.includes('..'))throw Error('Invalid path');
+  await gh(`${rp()}/contents/${v.p}`,{method:'PUT',body:{message:v.m,content:enc(v.c),branch:S.branch}});toast('Created');S.path=v.p.split('/').slice(0,-1).join('/');T.files()})}

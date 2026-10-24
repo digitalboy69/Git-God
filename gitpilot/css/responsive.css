@@ -1,0 +1,20 @@
+/* Responsive breakpoints and reduced-motion (keep last) */
+@media(max-width:1000px){#main{padding:26px 22px 70px}header{padding:0 18px}}
+@media(max-width:860px){
+ aside{position:fixed;inset:0 auto 0 0;width:min(300px,86vw);transform:translateX(-104%);background:var(--side);box-shadow:20px 0 60px -10px #000a}
+ aside.open{transform:none}
+ #sb.open+#scrim{display:block;position:fixed;inset:0;z-index:30;background:#02040a99;backdrop-filter:blur(4px);animation:fade .3s}
+ #menu{display:inline-flex}}
+@media(max-width:640px){
+ body{font-size:14px}h2{font-size:23px}
+ #main{padding:18px 14px 70px}header{height:58px;padding:0 10px;gap:8px}header .un{display:none}header select{max-width:132px}
+ .grid{grid-template-columns:repeat(2,1fr);gap:10px}.card{padding:14px}.m{font-size:27px}
+ .row{gap:8px}.row>input,.row>select{flex:1 1 100%;max-width:none}
+ .item{flex-wrap:wrap;padding:13px 14px}.item:hover{padding-left:14px}.item .g{flex:1 1 100%}
+ .tabs{margin:16px -4px 14px}
+ #toast{inset:auto 12px 12px 12px;width:auto}#toast div{max-width:none}
+ dialog{margin:auto 0 0;width:100%;max-width:none;border-radius:24px 24px 0 0;padding:20px 18px calc(20px + env(safe-area-inset-bottom))}
+ #conn{padding-top:6vh}#conn h1{font-size:32px}
+ .dz{padding:26px 12px}}
+@media(max-width:380px){.grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}

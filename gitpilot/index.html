@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GitPilot — GitHub Command Center</title>
+<meta name="theme-color" content="#06080E">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<!-- applies the saved theme before first paint (no flash) -->
+<script src="js/core/theme-init.js"></script>
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/auth.css">
+<link rel="stylesheet" href="css/push.css">
+<link rel="stylesheet" href="css/guard.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+<div id="app"></div><div id="toast" popover="manual"></div><dialog id="dlg"></dialog>
+<!-- Plain scripts (no build step, works by double-clicking this file). Order matters: top to bottom. -->
+<script src="js/core/state.js"></script>
+<script src="js/core/utils.js"></script>
+<script src="js/core/api.js"></script>
+<script src="js/core/ui.js"></script>
+<script src="js/core/theme.js"></script>
+<script src="js/lib/git.js"></script>
+<script src="js/lib/diff.js"></script>
+<script src="js/lib/text.js"></script>
+<script src="js/lib/zip.js"></script>
+<script src="js/auth/profiles.js"></script>
+<script src="js/layout/shell.js"></script>
+<script src="js/views/dashboard.js"></script>
+<script src="js/views/repositories.js"></script>
+<script src="js/views/repo.js"></script>
+<script src="js/repo-tabs/files.js"></script>
+<script src="js/repo-tabs/branches.js"></script>
+<script src="js/repo-tabs/commits.js"></script>
+<script src="js/repo-tabs/issues.js"></script>
+<script src="js/repo-tabs/pulls.js"></script>
+<script src="js/repo-tabs/actions.js"></script>
+<script src="js/repo-tabs/releases.js"></script>
+<script src="js/repo-tabs/structure.js"></script>
+<script src="js/features/push/queue.js"></script>
+<script src="js/features/push/guard.js"></script>
+<script src="js/features/push/push.js"></script>
+<script src="js/features/push/push-tab.js"></script>
+<script src="js/features/download-zip.js"></script>
+<script src="js/views/automate.js"></script>
+<script src="js/views/notifications.js"></script>
+<script src="js/main.js"></script>
+</body></html>

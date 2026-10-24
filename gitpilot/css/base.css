@@ -1,0 +1,33 @@
+/* Base: reset, typography, buttons, form controls */
+*{box-sizing:border-box;scrollbar-width:thin;scrollbar-color:var(--bd) transparent}
+::-webkit-scrollbar{width:9px;height:9px}::-webkit-scrollbar-thumb{background:var(--bd);border-radius:9px}::-webkit-scrollbar-track{background:transparent}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--tx);font:14px/1.55 var(--sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(900px 520px at 88% -8%,#7C5CFC2e,transparent 70%),radial-gradient(760px 460px at -6% 108%,#4F8CFF26,transparent 70%),radial-gradient(500px 300px at 50% 40%,#7C5CFC0d,transparent 70%)}
+:root[data-t=light] body::before{background:radial-gradient(900px 520px at 88% -8%,#7C5CFC1f,transparent 70%),radial-gradient(760px 460px at -6% 108%,#4F8CFF1c,transparent 70%)}
+a{color:var(--s);text-decoration:none;transition:.2s}a:hover{filter:brightness(1.2);text-decoration:underline}
+code{font:12.5px var(--mono);background:var(--elev);border:1px solid var(--bd);padding:1px 6px;border-radius:6px}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--s);outline-offset:2px}
+button,.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:36px;padding:0 14px;font-size:13.5px;font-weight:550;line-height:1;white-space:nowrap;background:var(--elev);border:1px solid var(--bd);border-radius:11px;color:var(--tx);cursor:pointer;transition:transform .15s var(--ease),background .2s,border-color .2s,box-shadow .2s,filter .2s;-webkit-tap-highlight-color:transparent;user-select:none}
+button:hover,.btn:hover{background:var(--hov);border-color:color-mix(in srgb,var(--p) 55%,var(--bd))}
+button:active,.btn:active{transform:scale(.96)}
+button.pri{background:var(--g);border:0;color:#fff;box-shadow:0 6px 20px -6px #7C5CFC99,inset 0 1px 0 #ffffff33}
+button.pri:hover{filter:brightness(1.1);box-shadow:0 10px 26px -6px #7C5CFCaa,inset 0 1px 0 #ffffff33}
+button.dan{color:var(--bad);background:color-mix(in srgb,var(--bad) 9%,var(--elev));border-color:color-mix(in srgb,var(--bad) 28%,var(--bd))}
+button.dan:hover{background:color-mix(in srgb,var(--bad) 18%,var(--elev));border-color:var(--bad)}
+.btn input[type=checkbox]{margin:0}
+input,select,textarea{width:100%;background:color-mix(in srgb,var(--bg) 70%,var(--card));border:1px solid var(--bd);border-radius:11px;padding:9px 12px;min-height:38px;transition:border-color .2s,box-shadow .2s,background .2s}
+input::placeholder,textarea::placeholder{color:color-mix(in srgb,var(--tx2) 65%,transparent)}
+input:hover,select:hover,textarea:hover{border-color:color-mix(in srgb,var(--p) 40%,var(--bd))}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--p);box-shadow:0 0 0 3px color-mix(in srgb,var(--p) 28%,transparent)}
+select{appearance:none;-webkit-appearance:none;padding-right:32px;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%238D9AB0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1.5l5 5 5-5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
+input[type=checkbox]{width:18px;min-height:18px;height:18px;padding:0;accent-color:var(--p);cursor:pointer}
+textarea{font:13px/1.65 var(--mono);min-height:320px;resize:vertical;tab-size:2}
+label{display:block;margin:14px 0 6px;font-size:12.5px;font-weight:550;color:var(--tx2)}
+.btn{margin:0;font-weight:500}
+h2{margin:0 0 6px;font-size:28px;font-weight:750;letter-spacing:-.03em;line-height:1.2}
+h3{margin:26px 0 12px;font-size:15px;font-weight:650;letter-spacing:-.01em}
+.dim{color:var(--tx2);font-size:12.5px}
+.sp{flex:1}
+::selection{background:color-mix(in srgb,var(--p) 40%,transparent)}

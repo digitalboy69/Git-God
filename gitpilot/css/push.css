@@ -1,0 +1,4 @@
+/* Push tab: drop zone and progress bar */
+.dz{border:2px dashed color-mix(in srgb,var(--p) 40%,var(--bd));border-radius:20px;padding:36px 18px;text-align:center;background:color-mix(in srgb,var(--p) 4%,var(--card));transition:.3s var(--ease)}
+.dz:hover{border-color:var(--p)}.dz.hot{border-color:var(--p);background:color-mix(in srgb,var(--p) 14%,var(--card));transform:scale(1.015)}.big{font-size:42px;line-height:1;margin-bottom:8px}.dz .row{justify-content:center}
+.pbar{height:8px;background:var(--elev);border-radius:99px;overflow:hidden;margin:14px 0}.pbar i{display:block;height:100%;width:0;border-radius:99px;background:var(--g);box-shadow:0 0 14px #7C5CFC88;transition:width .35s var(--ease)}

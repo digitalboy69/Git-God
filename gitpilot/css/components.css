@@ -1,0 +1,34 @@
+/* Reusable components: cards, lists, tags, tabs, code blocks, dialog, toast, skeleton */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);padding:18px;box-shadow:var(--sh);transition:transform .3s var(--ease),border-color .3s,box-shadow .3s}
+.grid .card:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--p) 60%,var(--bd));box-shadow:0 18px 40px -18px #7C5CFC66}
+.card.warn,.card.bad{background:color-mix(in srgb,currentColor 7%,var(--card));border-color:color-mix(in srgb,currentColor 30%,var(--bd))}
+.m{font-size:34px;font-weight:750;letter-spacing:-.03em;line-height:1.15;margin-top:4px;background:linear-gradient(90deg,var(--tx),var(--s));-webkit-background-clip:text;background-clip:text;color:transparent}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:14px 0}.row>input{flex:1;min-width:150px;width:auto}.row>select{flex:0 1 190px;min-width:130px;width:auto}
+.list{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh)}
+.item{position:relative;display:flex;gap:12px;align-items:center;padding:14px 18px;border-bottom:1px solid var(--bd);cursor:pointer;transition:background .2s,padding .25s var(--ease)}
+.item:last-child{border-bottom:0}
+.item:hover{background:var(--hov);padding-left:22px}
+.item::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--g);opacity:0;transition:opacity .2s}.item:hover::before{opacity:1}
+.item .g{flex:1;min-width:0}.item b{word-break:break-word;font-weight:620}
+.item .g .dim{margin-top:2px;overflow:hidden;text-overflow:ellipsis}
+.tag{display:inline-flex;align-items:center;font-size:11px;font-weight:600;line-height:1;padding:4px 9px;border-radius:99px;color:var(--tx2);background:color-mix(in srgb,currentColor 11%,transparent);border:1px solid color-mix(in srgb,currentColor 26%,transparent);vertical-align:middle}
+.ok{color:var(--ok)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+.tabs{display:flex;gap:4px;padding:5px;margin:20px 0 18px;background:var(--card);border:1px solid var(--bd);border-radius:15px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:0 0 auto;min-height:36px;border:0;background:transparent;color:var(--tx2);border-radius:11px;padding:0 16px}
+.tabs button:hover{color:var(--tx);background:var(--elev)}
+.tabs button.on{color:#fff;background:var(--g);box-shadow:0 6px 16px -6px #7C5CFC99}
+pre{margin:10px 0;padding:14px 16px;background:color-mix(in srgb,var(--bg) 75%,var(--card));border:1px solid var(--bd);border-radius:13px;overflow:auto;font:12.5px/1.65 var(--mono);max-height:440px;tab-size:2}
+pre div{padding:0 6px;margin:0 -6px;border-radius:4px;white-space:pre}
+.add{color:var(--ok)}.del{color:var(--bad)}
+pre .add{background:color-mix(in srgb,var(--ok) 11%,transparent)}pre .del{background:color-mix(in srgb,var(--bad) 11%,transparent)}
+dialog{margin:auto;padding:24px;width:min(540px,calc(100vw - 24px));max-height:90vh;max-height:90dvh;overflow:auto;background:var(--card);color:var(--tx);border:1px solid var(--bd);border-radius:22px;box-shadow:0 40px 90px -24px #000c}
+dialog[open]{animation:pop .35s var(--ease)}
+dialog::backdrop{background:#02040acc;backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);animation:fade .3s}
+:root[data-t=light] dialog::backdrop{background:#1b254155}
+dialog h3{margin:0 0 4px;font-size:18px;letter-spacing:-.02em}dialog p{color:var(--tx2);margin:8px 0}
+#toast{position:fixed;inset:auto 20px 20px auto;width:380px;max-width:calc(100vw - 24px);margin:0;padding:0;border:0;background:transparent;overflow:visible;z-index:99;align-items:flex-end;display:flex;flex-direction:column;gap:10px;pointer-events:none}
+#toast div{pointer-events:auto;max-width:380px;padding:12px 16px;background:color-mix(in srgb,var(--elev) 92%,transparent);backdrop-filter:blur(14px);border:1px solid var(--bd);border-left:3px solid var(--p);border-radius:13px;box-shadow:0 18px 40px -14px #000a;animation:tin .4s var(--ease);word-break:break-word}
+.bar{height:10px;border-radius:99px;display:flex;overflow:hidden;background:var(--elev);gap:2px}.bar div{transition:width .6s var(--ease)}
+.sk{height:84px;border-radius:var(--r);background:linear-gradient(100deg,var(--card) 20%,var(--hov) 40%,var(--card) 60%);background-size:250% 100%;animation:sk 1.3s linear infinite}@keyframes sk{to{background-position:-250% 0}}
+.scroll{overflow-x:auto}
